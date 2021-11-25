@@ -1,7 +1,11 @@
 <template>
-  <Tutorial/>
+  <h1>Hello Supabase!</h1>
 </template>
 
 <script>
-export default {}
+export default {
+  async fetch() {
+
+  }
+}
 </script>
