@@ -1,11 +1,35 @@
 <template>
-  <h1>Hello Supabase!</h1>
+
 </template>
 
 <script>
-export default {
-  async fetch() {
+//import Auth from "./components/Auth.vue"
+//import Profile from "./components/Profile.vue"
 
+export default {
+  /*components: {
+    Auth,
+    Profile
+  },*/
+  computed: {
+    user() {
+      return this.$store.getters.user
+    }
+  },
+  watch: {
+    user(data) {
+      if(Object.keys(data).length > 0) {
+        this.$router.replace('/profile')
+      } else {
+        this.$router.replace('/auth')
+      }
+    }
+  },
+  mounted() {
+    this.$store.commit('setUser', this.$supabase.auth.user() || {})
+    this.$supabase.auth.onAuthStateChange((_, session) => {
+      this.$store.commit('setUser', session.user || {})
+    })
   }
 }
 </script>
