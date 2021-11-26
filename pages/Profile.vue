@@ -51,14 +51,12 @@ export default {
       return this.$store.getters.user
     }
   },
-  // change
   watch: {
     user(data) {
       this.checkUser(data)
     }
   },
   mounted() {
-    // change
     this.checkUser(this.$supabase.auth.user() || {}).then((value) => {
       value && this.getProfile()
     })
@@ -91,7 +89,8 @@ export default {
         }
 
       } catch (error) {
-        alert(error.message)
+        //alert(error.message)
+        console.error(error.message)
       } finally {
         this.loading = false
       }

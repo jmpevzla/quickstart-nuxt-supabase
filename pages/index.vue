@@ -3,14 +3,7 @@
 </template>
 
 <script>
-//import Auth from "./components/Auth.vue"
-//import Profile from "./components/Profile.vue"
-
 export default {
-  /*components: {
-    Auth,
-    Profile
-  },*/
   computed: {
     user() {
       return this.$store.getters.user
