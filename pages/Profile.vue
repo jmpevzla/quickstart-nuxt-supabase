@@ -1,5 +1,8 @@
 <template>
   <form class="form-widget" @submit.prevent="updateProfile">
+
+    <Avatar :path="avatar_url" @update:path="(path) => avatar_url = path" @upload="updateProfile" />
+
     <div>
       <label for="email">Email</label>
       <input id="email" type="text" :value="user.email" disabled />
@@ -31,7 +34,12 @@
 </template>
 
 <script>
+import Avatar from '../components/Avatar.vue'
+
 export default {
+  components: {
+    Avatar
+  },
   data: () => ({
     loading: true,
     username: '',
